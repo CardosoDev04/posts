@@ -18,7 +18,7 @@ public static class PostService
 
     public static List<Post> GetAllPosts() => Posts;
     public static Post? GetPost(int id) => Posts.FirstOrDefault(p => p.Id == id);
-    
+
     public static Post AddPost(Post post)
     {
         post.Id = _nextId++;
@@ -31,8 +31,8 @@ public static class PostService
         var post = PostService.GetPost(id);
 
         if (post == null) return null;
-        
-        
+
+
         _nextId--;
         Posts.Remove(post);
         return post;
@@ -41,14 +41,15 @@ public static class PostService
     public static Post? UpdatePost(int id, Post post)
     {
         var toUpdate = PostService.GetPost(id);
-        
+
         if (toUpdate == null) return null;
-        
+
         var index = Posts.FindIndex(p => p.Id == toUpdate.Id);
-        
+
+        post.Id = toUpdate.Id;
+
         Posts[index] = post;
-        
+
         return post;
-        
     }
 }
