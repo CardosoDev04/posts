@@ -1,55 +1,50 @@
+using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 namespace Blog.Services;
 
-public static class PostService
+public class PostService
 {
-    private static List<Post> Posts { get; }
-    private static int _nextId = 3;
+    private readonly BlogContext _context;
 
-    static PostService()
+    public PostService(BlogContext context)
     {
-        Posts = new List<Post>
-        {
-            new Post { Id = 1, Author = "John Doe", AuthorId = 1, Content = "X is outdated as hell" },
-            new Post { Id = 2, Author = "Jane Doe", AuthorId = 2, Content = "Y is the future" }
-        };
+        _context = context;
     }
 
-    public static List<Post> GetAllPosts() => Posts;
-    public static Post? GetPost(int id) => Posts.FirstOrDefault(p => p.Id == id);
+    public IEnumerable<Post> GetAllPosts() => _context.Posts.AsNoTracking().ToList();
+    public Post? GetPost(int id) => _context.Posts.SingleOrDefault(p => p.Id == id);
 
-    public static Post AddPost(Post post)
+    public Post AddPost(Post post)
     {
-        post.Id = _nextId++;
-        Posts.Add(post);
+        _context.Posts.Add(post);
+        _context.SaveChanges();
         return post;
     }
 
-    public static Post? DeletePost(int id)
+    public Post? DeletePost(int id)
     {
-        var post = PostService.GetPost(id);
-
-        if (post == null) return null;
-
-
-        _nextId--;
-        Posts.Remove(post);
-        return post;
+        var toDelete = GetPost(id);
+        if (toDelete == null) return null;
+        
+        _context.Posts.Remove(toDelete);
+        _context.SaveChanges();
+        return toDelete;
     }
 
-    public static Post? UpdatePost(int id, Post post)
+    public Post? UpdatePost(int id, Post post)
     {
-        var toUpdate = PostService.GetPost(id);
+        var toUpdate = GetPost(id);
 
         if (toUpdate == null) return null;
-
-        var index = Posts.FindIndex(p => p.Id == toUpdate.Id);
-
-        post.Id = toUpdate.Id;
-
-        Posts[index] = post;
-
-        return post;
+        
+        toUpdate.Content = post.Content;
+        
+        _context.Posts.Update(toUpdate);
+        _context.SaveChanges();
+        
+        return toUpdate;
     }
 }

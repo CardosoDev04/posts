@@ -1,7 +1,13 @@
+using Blog.Data;
+using Blog.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSqlite<BlogContext>("Data Source=blog.db");
+builder.Services.AddScoped<PostService>();
 
 var app = builder.Build();
 
