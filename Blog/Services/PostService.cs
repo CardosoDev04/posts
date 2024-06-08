@@ -2,10 +2,10 @@ using Blog.Models;
 
 namespace Blog.Services;
 
-public class PostService
+public static class PostService
 {
     private static List<Post> Posts { get; }
-    private static int _nextId = 2;
+    private static int _nextId = 3;
 
     static PostService()
     {
@@ -17,7 +17,6 @@ public class PostService
     }
 
     public static List<Post> GetAllPosts() => Posts;
-    
     public static Post? GetPost(int id) => Posts.FirstOrDefault(p => p.Id == id);
     
     public static Post AddPost(Post post)
@@ -27,11 +26,11 @@ public class PostService
         return post;
     }
 
-    public static Post? DeletePost(Post post)
+    public static Post? DeletePost(int id)
     {
-        var exists = Posts.Any(p => p.Id == post.Id);
+        var post = PostService.GetPost(id);
 
-        if (!exists) return null;
+        if (post == null) return null;
         
         
         _nextId--;
@@ -39,13 +38,13 @@ public class PostService
         return post;
     }
 
-    public static Post? UpdatePost(Post post)
+    public static Post? UpdatePost(int id, Post post)
     {
-        var exists = Posts.Any(p => p.Id == post.Id);
+        var toUpdate = PostService.GetPost(id);
         
-        if (!exists) return null;
+        if (toUpdate == null) return null;
         
-        var index = Posts.FindIndex(p => p.Id == post.Id);
+        var index = Posts.FindIndex(p => p.Id == toUpdate.Id);
         
         Posts[index] = post;
         
