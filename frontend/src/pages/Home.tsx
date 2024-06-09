@@ -1,33 +1,32 @@
 import {Post} from "../components/Post.tsx";
 import {useEffect, useState} from "react";
 import {PostType} from "../types/Post.ts";
+import {Navbar} from "../components/Navbar.tsx";
 
 export function Home() {
 
     const [posts,setPosts] = useState<PostType[] | undefined>(undefined);
 
+    const fetchPosts = async () => {
+        const response = await fetch("http://localhost:5213/posts");
+        setPosts(await response.json());
+    }
+    fetchPosts().then();
+
     useEffect(() => {
-        const fetchPosts = async () => {
-            const response = await fetch("http://localhost:5213/posts");
-            setPosts(await response.json());
-        }
-        fetchPosts().then();
+        fetchPosts().then()
     },[])
 
     return (
         <>
+            <Navbar isHome={true}/>
             <div>
-                <nav id="navbar" className={"flex justify-between p-10"}>
-                    <h1 className={"font-inter text-5xl font-semibold select-none"}>PostsApp</h1>
-                    <div>
-                        <button
-                            className={"p-3 rounded-md bg-blue-600 hover:bg-blue-800 hover:scale-110 transition-transform text-white font-semibold"}>Make
-                            a post
-                        </button>
-                    </div>
-                </nav>
-                <section>
-                        <ul className={"flex flex-col gap-y-5 justify-center items-center w-full"}>
+                <section className={"flex flex-col h-full justify-center items-center gap-y-10"}>
+                    <button onClick={fetchPosts}>
+                        <img className={"w-7 h-7 opacity-75 hover:opacity-100"} alt="refresh"
+                             src={"https://cdn.jsdelivr.net/gh/CardosoDev04/cdn-test@main/refresh-page-option.png"}/>
+                    </button>
+                        <ul className={"flex flex-col-reverse gap-y-5 justify-center items-center w-full"}>
                         {posts?.map((post) => {
                             return post ? <li className={"flex w-full justify-center"} key={post.id}><Post post={post}/></li> : <></>
                         })}

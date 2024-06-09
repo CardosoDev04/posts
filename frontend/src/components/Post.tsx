@@ -13,7 +13,7 @@ export function Post({post}:{post: PostType}) {
                     }</h2>
                     <span className={"font-inter text-md"}>Posted on {formatDate(date)} at {getTime(date)}</span>
                     </div>
-                    <div id="post-actions" className={"flex select-none flex-col gap-y-10"}>
+                    <div id="post-actions" className={"flex justify-end items-end select-none w-1/4 flex-col gap-y-10"}>
 
                             <div className={"flex gap-x-4"}>
                                 <span className={"font-inter text-lg"}>{post.likes}</span>
@@ -36,7 +36,7 @@ export function Post({post}:{post: PostType}) {
                         </div>
 
                     </div>
-                    <div id="post-content" className={"flex justify-center items-center"}>
+                    <div id="post-content" className={"flex justify-center w-2/3 items-center"}>
                         <span className={"text-2xl"}>{post.content}</span>
                     </div>
                 </div>

@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="002a632f-a615-4938-9c45-7f19b5e31bd8" name="Changes" comment="Post type, post component, home page">
+    <list default="true" id="002a632f-a615-4938-9c45-7f19b5e31bd8" name="Changes" comment="Post likes, dislikes and views">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/MakePost.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/blog.db" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/blog.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -89,7 +94,7 @@
       <workItem from="1717863012524" duration="869000" />
       <workItem from="1717863891967" duration="2833000" />
       <workItem from="1717867643278" duration="2944000" />
-      <workItem from="1717943467879" duration="3287000" />
+      <workItem from="1717943467879" duration="5739000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend part started">
       <option name="closed" value="true" />
@@ -107,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717946189316</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Post likes, dislikes and views">
+      <option name="closed" value="true" />
+      <created>1717946779753</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717946779753</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Frontend part started" />
     <MESSAGE value="Post type, post component, home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Post type, post component, home page" />
+    <MESSAGE value="Post likes, dislikes and views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Post likes, dislikes and views" />
   </component>
 </project>
